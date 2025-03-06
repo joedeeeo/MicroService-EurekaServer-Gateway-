@@ -1,0 +1,24 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: Service_Bank
+        uri: lb://SERVICE-BANK
+        predicates:
+        - Path=/bank/**
+      - id: Service_Donor
+        uri: lb://SERVICE-DONOR
+        predicates:
+        - Path=/donor/**
+      - id: Service_Consumer
+        uri: lb://SERVICE-CONSUMER
+        predicates:
+        - Path=/consumer/**
+      - id: Service_Admin
+        uri: lb://SERVICE-ADMIN
+        predicates:
+        - Path=/admin/**
